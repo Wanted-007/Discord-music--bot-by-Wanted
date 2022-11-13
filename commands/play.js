@@ -91,7 +91,7 @@ module.exports = {
 
             // finish if no tracks were found
             if (result.tracks.length === 0)
-                return interaction.editReply("No results")
+                await interaction.reply ({ content: "No result", ephemeral: true });
             
             // Add the track to the queue
             const song = result.tracks[0]

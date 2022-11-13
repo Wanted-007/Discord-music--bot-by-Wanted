@@ -1,4 +1,3 @@
-require('ffmpeg-static');
 require("dotenv").config();
 
 const {REST} = require('@discordjs/rest');
