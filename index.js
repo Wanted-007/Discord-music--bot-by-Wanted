@@ -89,4 +89,14 @@ rest.put(Routes.applicationCommands(clientId), { body: [] })
 	.catch(console.error);
 */
 
+//event-handler
+readdirSync('./events').forEach(async file => {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+})
+
 client.login(process.env.TOKEN);
