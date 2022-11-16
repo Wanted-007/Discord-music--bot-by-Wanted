@@ -5,7 +5,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { Client, GatewayIntentBits, Events, Collection } = require('discord.js');
 const { Player } = require("discord-player")
-
+const { readdirSync } = require("fs")
 const fs = require('fs');
 const path = require('path');
 
@@ -70,7 +70,7 @@ client.on("interactionCreate", async interaction => {
   }
   catch (error) {
     console.error(error);
-    await interaction.reply({ content: "There was an error executing this command" });
+    await interaction.reply({ content: Error `executing ${interaction.commandName}` });
   }
 });
 
@@ -88,15 +88,5 @@ rest.put(Routes.applicationCommands(clientId), { body: [] })
 	.then(() => console.log('Successfully deleted all application commands.'))
 	.catch(console.error);
 */
-
-client.on("ready", () => {
-  client.user.setPresence({
-      activities: [{ 
-        name: "Music",
-        type: "PLAYING"
-      }],
-      status: "idle"
-  })
-})
 
 client.login(process.env.TOKEN);
