@@ -20,7 +20,7 @@ module.exports = {
 
       const embed = new EmbedBuilder()
       .setDescription(`🏓Pong!\nBot Latency: \`${Math.round(client.ws.ping)}ms\`\nServer count: ${client.guilds.cache.size}\nUptime: ${uptime}`)
-      .setThumbnail(thumbnail)
+      .setImage(thumbnail)
       .setColor(interaction.guild.members.me.roles.highest.hexColor)
 
       interaction.reply({ embeds: [embed], ephemeral: false });
