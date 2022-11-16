@@ -11,9 +11,9 @@ const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = requi
     execute(interaction, client) {
       const embed = new EmbedBuilder()
         .setTitle("Help!")
-        .setColor(interaction.guild.members.me.roles.highest.hexColor)
+        .setColor("Random")
         .setDescription(`${Commands.join("\n")}`)
         .setTimestamp();
-      interaction.reply({ embeds: [embed], ephemeral: true });
+      interaction.reply({ embeds: [embed], ephemeral: false });
     },
   };
