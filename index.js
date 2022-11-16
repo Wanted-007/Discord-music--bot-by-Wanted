@@ -89,5 +89,11 @@ rest.put(Routes.applicationCommands(clientId), { body: [] })
 	.catch(console.error);
 */
 
+client.on("ready", () => {
+  client.user.setActivity("MAINTENANCE MODE", {
+    type: "PLAYING",
+    url: ""
+  });
+});
 
 client.login(process.env.TOKEN);

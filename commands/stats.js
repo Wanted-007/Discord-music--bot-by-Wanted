@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
-
+const { color , thumbnail} = require("../config")
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -17,13 +17,12 @@ module.exports = {
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = Math.floor(totalSeconds % 60);
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
-    //************
-    try {
-      const mesg = await interaction.reply({ content: "🏓 Pong!", fetchReply: true });
 
-      await interaction.editReply({ content: `Pong!\nBot Latency: \`${mesg.createdTimestamp - interaction.createdTimestamp}ms\`\nServer count: ${client.guilds.cache.size}\nUptime: ${uptime}` });
-    } catch (err) {
-      console.log("Something Went Wrong => ", err);
+      const embed = new EmbedBuilder()
+      .setDescription(`🏓Pong!\nBot Latency: \`${Math.round(client.ws.ping)}ms\`\nServer count: ${client.guilds.cache.size}\nUptime: ${uptime}`)
+      .setThumbnail(thumbnail)
+      .setColor(interaction.guild.members.me.roles.highest.hexColor)
+
+      interaction.reply({ embeds: [embed], ephemeral: false });
     }
   }
-}
