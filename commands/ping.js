@@ -13,7 +13,7 @@ module.exports = {
    *
    * @param {ChatInputCommandInteraction} interaction
    */
-  execute(interaction, client) {
+  execute: async ({ client, interaction }) => {
     const embed = new EmbedBuilder()
       .setTitle("Pong!")
       .setColor(interaction.guild.members.me.roles.highest.hexColor)
