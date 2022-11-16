@@ -90,10 +90,13 @@ rest.put(Routes.applicationCommands(clientId), { body: [] })
 */
 
 client.on("ready", () => {
-  client.user.setActivity("MAINTENANCE MODE", {
-    type: "PLAYING",
-    url: ""
-  });
-});
+  client.user.setPresence({
+      activities: [{ 
+        name: "Music",
+        type: "PLAYING"
+      }],
+      status: "idle"
+  })
+})
 
 client.login(process.env.TOKEN);
