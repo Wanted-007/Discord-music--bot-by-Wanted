@@ -28,6 +28,7 @@ module.exports = {
         new EmbedBuilder()
           .setDescription(`${currentSong.title} has been skipped!`)
           .setThumbnail(currentSong.thumbnail)
+          .setColor(interaction.guild.members.me.roles.highest.hexColor)
       ]
     })
   },
