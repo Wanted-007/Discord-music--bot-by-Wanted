@@ -16,7 +16,7 @@ module.exports = {
   execute: async ({ client, interaction }) => {
     const embed = new EmbedBuilder()
       .setTitle("Pong!")
-      .setColor(interaction.guild.members.me.roles.highest.hexColor)
+      .setColor("Random")
       .setDescription(
         `Latency is **${
           Date.now() - interaction.createdTimestamp
