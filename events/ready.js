@@ -1,7 +1,13 @@
-module.exports = {
-	name: 'ready',
-	once: true,
-	execute(client) {
-    let activities = [ `Developed by Wanted#8087`, `${client.user.username}` ], i = 0;
-    setInterval(() => client.user.setActivity({ name: `${activities[i++ % activities.length]}`, type: "LISTENING" }), 22000);
-}};
+module.exports = async (client) => {
+	(client.Ready = true),
+	  client.user.setPresence({
+		status: "idle", // You can show online, idle, and dnd
+		activity: {
+		  name: "Music",
+		  type: "PLAYING",
+		},
+	  });
+	client.Manager.init(client.user.id);
+	client.log("Successfully Logged in as " + client.user.tag); // You can change the text if you want, but DO NOT REMOVE "client.user.tag"
+	client.RegisterSlashCommands();
+  };
