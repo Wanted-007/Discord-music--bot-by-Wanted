@@ -74,14 +74,7 @@ client.on("interactionCreate", async interaction => {
   }
 });
 
-client.on("message", (message) => {
-  if (message.content === '!ping') {
-    message.channel.send("Pinging ...")
-      .then((msg) => {
-        msg.edit("Pong: " + (Date.now() - msg.createdTimestamp) + "ms")
-      });
-  }
-})
+
 
 /*         Delete Commands
 rest.put(Routes.applicationCommands(clientId), { body: [] })
@@ -90,13 +83,6 @@ rest.put(Routes.applicationCommands(clientId), { body: [] })
 */
 
 //event-handler
-readdirSync('./events').forEach(async file => {
-	const event = require(`./events/${file}`);
-	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
-	} else {
-		client.on(event.name, (...args) => event.execute(...args));
-	}
-})
+
 
 client.login(process.env.TOKEN);

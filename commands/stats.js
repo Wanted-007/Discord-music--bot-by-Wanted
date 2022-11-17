@@ -19,7 +19,7 @@ module.exports = {
     let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 
       const embed = new EmbedBuilder()
-      .setDescription(`🏓Pong!\nBot Latency: \`${Math.round(client.ws.ping)}ms\`\nServer count: ${client.guilds.cache.size}\nUptime: ${uptime}`)
+      .setDescription(`STATS!\nBot Latency: \`${Math.round(client.ws.ping)}ms\`\nServer count: ${client.guilds.cache.size}\nUptime: ${uptime}`)
       .setThumbnail(thumbnail)
       .setColor(interaction.guild.members.me.roles.highest.hexColor)
 
