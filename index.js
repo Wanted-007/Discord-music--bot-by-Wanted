@@ -3,16 +3,18 @@ require("dotenv").config();
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { Client, GatewayIntentBits, Events, Collection } = require('discord.js');
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { Player } = require("discord-player")
-const { readdirSync } = require("fs")
 const fs = require('fs');
 const path = require('path');
+
+const { loadEvents } = require("./Handlers/eventHandler");
+
 
 /****************************
 
 const token = process.env.TOKEN
-const clientId="1033754801089024082"
+const clientId=""
 
 const rest = new REST({ version: '10' }).setToken(token);
 *****************************/
@@ -28,7 +30,7 @@ const client = new Client({
 const commands = [];
 client.commands = new Collection();
 
-const commandsPath = path.join(__dirname, "commands"); // E:\yt\discord bot\js\intro\commands
+const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
@@ -83,6 +85,7 @@ rest.put(Routes.applicationCommands(clientId), { body: [] })
 */
 
 //event-handler
-
+client.events = new Collection();
+loadEvents(client);
 
 client.login(process.env.TOKEN);

@@ -5,7 +5,7 @@ const { QueryType } = require("discord-player")
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("play")
-		.setDescription("play a song from YouTube.")
+		.setDescription("play a song from YouTube/Spotify.")
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName("search")
@@ -17,13 +17,13 @@ module.exports = {
         .addSubcommand(subcommand =>
 			subcommand
 				.setName("playlist")
-				.setDescription("Plays a playlist from YT")
+				.setDescription("Plays a playlist from YT/Spotify")
 				.addStringOption(option => option.setName("url").setDescription("the playlist's url").setRequired(true))
 		)
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName("song")
-				.setDescription("Plays a single song from YT")
+				.setDescription("Plays a single song from YT/Spotify")
 				.addStringOption(option => option.setName("url").setDescription("the song's url").setRequired(true))
 		),
 	execute: async ({ client, interaction, message }) => {

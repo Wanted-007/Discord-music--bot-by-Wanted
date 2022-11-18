@@ -17,7 +17,7 @@ const {
       const embed = new EmbedBuilder()
         .setTitle("Help?")
         .setColor("Random")
-        .setDescription("**🎶 Music**\n -`/play search`, `/skip`, `/pause`, `/leave`, `/queue`\n **ℹ Info** \n `/ping`, `/stats`,`/help`")
+        .setDescription("**🎶 Music**\n -`/play search`, `/skip`, `/pause`, `/leave`, `/queue`\n\n **ℹ Info** \n `/ping`, `/stats`,`/help`")
         .setTimestamp();
       interaction.reply({ embeds: [embed], ephemeral: false });
     },
